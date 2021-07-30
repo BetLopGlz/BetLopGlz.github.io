@@ -1,5 +1,7 @@
 var tareas = [];
-
+let miStorage = window.localStorage;
+//miStorage.clear();
+mostrarStorage();
 guardar.addEventListener('click', function () {
   let tareaNombre = document.getElementById('tarea').value;
   let descripcion = document.getElementById('descripcion').value;
@@ -7,12 +9,14 @@ guardar.addEventListener('click', function () {
   var idTarea = generarId()
   var tarea = new Tarea(idTarea, tareaNombre, descripcion)
   tareas.push(tarea)
+  miStorage.setItem(tareaNombre,descripcion);
   document.getElementById('tarea').value = ''
   document.getElementById('descripcion').value = ''
   }else{
       alert("No se puede agregar tarea, revisa los campos Tarea y Descripción");
   }
   mostrarTareas(tareas);
+  console.log(miStorage);
 })
 
 editar.addEventListener('click', function () {
@@ -64,15 +68,20 @@ function generarId () {
 
 
 function eliminaTarea (id) {
+    
+    
   var pToDelete = -1;
   var j = 0;
   while (pToDelete == -1) {
     if (tareas[j].idTarea == id) {
+    miStorage.removeItem(tareas[j].tareaNombre);
       pToDelete = j;
     }
     j++
   }
+
   this.tareas.splice(pToDelete, 1)
+  console.log(miStorage);
   console.log(tareas);
 
   mostrarTareas(this.tareas)
@@ -101,11 +110,15 @@ function mostrarTareas (tareas) {
 }
 
 function editaTarea(id){
+console.log("Esta es la tarea en storage");
+
 let tarea=tareas.filter(t => t.idTarea ==id);
 let t=tarea[0];
 console.log(tarea);
 idTarea = t.idTarea;
 tareaNombre=t.tareaNombre;
+let tStorage=miStorage.getItem(tareaNombre);
+console.log(tStorage);
 descripcion=t.descripcion;
 document.getElementById("tarea").value=tareaNombre;
 document.getElementById("descripcion").value=descripcion;
@@ -127,9 +140,13 @@ function guardarCambioTarea(idTarea,tareaNombre,descripcion) {
     }
     j++
   }
-  console.log(tareas);
- 
+  //console.log(tareas);
 }
+  function mostrarStorage(){
+    console.log(miStorage);
+  }
+
+
 
 
 
