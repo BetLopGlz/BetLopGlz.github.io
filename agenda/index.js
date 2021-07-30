@@ -16,7 +16,7 @@ const buildTarea=(idTarea,tareaNombre,descripcion)=>{
     return `<tr>
     <td>${tareaNombre}</td>
     <td>${descripcion}</td>
-    <td><button type="button" class="btn btn-secondary" onClick=eliminaTarea(${idTarea});> <i class="fa fa-trash-o"></i> Eliminar</button></td>
+    <td><button type="button" class="btn btn-secondary" onClick="eliminaTarea(${idTarea})";> <i class="fa fa-trash-o"></i> Eliminar</button></td>
     <td><button type="button" class="btn btn-secondary" > <i class="fa fa-edit"></i> Editar</button></td>
   </tr>`;
 
@@ -54,12 +54,41 @@ function mostrarTarea(){
     const tabla=document.querySelector('table');
     console.log(tabla);
         const t = tareas[tareas.length-1];
-        console.log(t);
         idTarea=t.idTarea;
         tareaNombre=t.tareaNombre;
         descripcion=t.descripcion;
         const codigohtml=buildTarea(idTarea,tareaNombre,descripcion);
         tabla.innerHTML=tabla.innerHTML+codigohtml;     
+}
+
+function eliminaTarea(id){
+    console.log(id);
+    var pToDelete=-1;
+    var j=0;
+    while (pToDelete==-1) {
+        if(tareas[j].idTarea==id){
+            pToDelete=j;
+        }
+        j++;
+    }
+    this.tareas.splice(pToDelete,1);
+    console.log(tareas);
+    const tabla=document.querySelector('table');
+    for (let i = 0; i < tareas.length; i++) {
+        const t = tareas[i];
+        idTarea=t.idTarea;
+        tareaNombre=t.tareaNombre;
+        descripcion=t.descripcion;
+        const codigohtml=buildTarea(idTarea,tareaNombre,descripcion);
+        if(i==0){
+            tabla.innerHTML=codigohtml; 
+        }else{
+            tabla.innerHTML=tabla.innerHTML+codigohtml; 
+        }
+           
+        
+    }
+    
 }
 
 
