@@ -16,6 +16,8 @@ guardar.addEventListener('click', function () {
 })
 
 editar.addEventListener('click', function () {
+    document.getElementById('editar').style.display ='none';
+    document.getElementById('guardar').style.display='inline';
     let tareaNombre = document.getElementById('tarea').value;
     let descripcion = document.getElementById('descripcion').value;
     let idTarea=document.getElementById('idTarea').value;
@@ -23,7 +25,7 @@ editar.addEventListener('click', function () {
     document.getElementById('tarea').value = '';
     document.getElementById('descripcion').value = '';
     document.getElementById('idTarea').value ='';
-    document.getElementById('editar').style.display ='none';
+    
     mostrarTareas(tareas);
   })
 
@@ -47,9 +49,6 @@ class Tarea {
     return buildTarea(this.idTarea, this.tareaNombre, this.descripcion)
   }
 
-  createTareaEdita(){
-      return buildTareaEdita(this.idTarea, this.NombreTarea,this.descripcion);
-  }
 }
 
 function generarId () {
