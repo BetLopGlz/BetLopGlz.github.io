@@ -9,6 +9,7 @@ guardar.addEventListener('click', function () {
   document.getElementById('tarea').value = ''
   document.getElementById('descripcion').value = ''
   mostrarTareas(tareas);
+  
 })
 
 const buildTarea = (idTarea, tareaNombre, descripcion) => {
