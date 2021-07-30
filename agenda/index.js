@@ -1,25 +1,41 @@
-var tareas = []
+var tareas = [];
+
 guardar.addEventListener('click', function () {
-  let tareaNombre = document.getElementById('tarea').value
-  let descripcion = document.getElementById('descripcion').value
+  let tareaNombre = document.getElementById('tarea').value;
+  let descripcion = document.getElementById('descripcion').value;
+  if(tareaNombre && descripcion!==''){
   var idTarea = generarId()
   var tarea = new Tarea(idTarea, tareaNombre, descripcion)
   tareas.push(tarea)
-  //console.log(tareas);
   document.getElementById('tarea').value = ''
   document.getElementById('descripcion').value = ''
+  }else{
+      alert("No se puede agregar tarea, revisa los campos Tarea y Descripción");
+  }
   mostrarTareas(tareas);
-  
 })
+
+editar.addEventListener('click', function () {
+    let tareaNombre = document.getElementById('tarea').value;
+    let descripcion = document.getElementById('descripcion').value;
+    let idTarea=document.getElementById('idTarea').value;
+    guardarCambioTarea(idTarea,tareaNombre,descripcion);
+    document.getElementById('tarea').value = '';
+    document.getElementById('descripcion').value = '';
+    document.getElementById('idTarea').value ='';
+    document.getElementById('editar').style.display ='none';
+    mostrarTareas(tareas);
+  })
 
 const buildTarea = (idTarea, tareaNombre, descripcion) => {
   return `<tr>
     <td>${tareaNombre}</td>
     <td>${descripcion}</td>
     <td><button type="button" class="btn btn-secondary" onClick="eliminaTarea(${idTarea})";> <i class="fa fa-trash-o"></i> Eliminar</button></td>
-    <td><button type="button" class="btn btn-secondary" > <i class="fa fa-edit"></i> Editar</button></td>
+    <td><button type="button" class="btn btn-secondary" onClick="editaTarea(${idTarea})";> <i class="fa fa-edit"></i> Editar</button></td>
   </tr>`
 }
+
 
 class Tarea {
   constructor (idTarea, tareaNombre, descripcion) {
@@ -29,6 +45,10 @@ class Tarea {
   }
   createTarea () {
     return buildTarea(this.idTarea, this.tareaNombre, this.descripcion)
+  }
+
+  createTareaEdita(){
+      return buildTareaEdita(this.idTarea, this.NombreTarea,this.descripcion);
   }
 }
 
@@ -76,8 +96,41 @@ function mostrarTareas (tareas) {
       }
     }
   } else {
-    
     tabla.innerHTML = `<tr>
         </tr>`;
   }
 }
+
+function editaTarea(id){
+let tarea=tareas.filter(t => t.idTarea ==id);
+let t=tarea[0];
+console.log(tarea);
+idTarea = t.idTarea;
+tareaNombre=t.tareaNombre;
+descripcion=t.descripcion;
+document.getElementById("tarea").value=tareaNombre;
+document.getElementById("descripcion").value=descripcion;
+document.getElementById("idTarea").value=idTarea;
+document.getElementById("guardar").style.display="none";
+document.getElementById("editar").style.display="inline";
+
+}
+
+function guardarCambioTarea(idTarea,tareaNombre,descripcion) {
+  console.log(idTarea);
+  var pToCheck = -1;
+  var j = 0;
+  while (pToCheck == -1) {
+    if (tareas[j].idTarea == idTarea) {
+      tareas[j].tareaNombre=tareaNombre;
+      tareas[j].descripcion=descripcion;
+        pToCheck=j;
+    }
+    j++
+  }
+  console.log(tareas);
+ 
+}
+
+
+
