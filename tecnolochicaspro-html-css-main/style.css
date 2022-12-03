@@ -1,0 +1,159 @@
+/*Agregar estilo al body*/
+body {
+  background-color: gainsboro;
+  color: rgb(209, 107, 209);
+}
+
+p{
+  color: black;
+}
+
+
+/*Selectores de Clase. Inician con un punto (.)*/
+.lista-de-gatos {
+  color: lightgreen;
+}
+
+/*Selectores CSS. Selectores de Tipo. Tamaño de Fuente*/
+h2 {
+  font-size: 30px;
+  /*Ejemplo de Familias Tipográficas*/
+  font-family: Verdana; 
+}
+/*Tamaño de la fuente*/
+h3 {
+  font-size: 25px;
+}
+
+/*Ejemplo de Google Fonts*/
+h1 {
+  font-family: 'Roboto', sans-serif;
+}
+
+/*TAMAÑO DE FUENTE*/
+/*Ejemplo de aplicar el mismo estilo a diferentes elementos*/
+p,
+ul,
+ol {
+  font-size: 20px;
+}
+
+/*Ejemplo de aplicar más de una propiedad a un elemento*/
+/* li{
+  color: blue;
+  font-size: 15px;
+} */
+/*
+
+img {
+  <!--Propiedad width = ancho-->
+  width: 200px;
+}
+*/
+
+/*Ejemplo de aplicar propiedades a diferentes img. Creamos una clase llamada imagen-de-gatos* y le modificamos el ancho. ancho = width*/
+
+.imagen-de-gatos {
+  width: 200px;
+
+/*Añade bordes alrededor de un elemento, en este caso, una imagen*/
+  border-width: 5px;
+  border-color: rgb(188, 59, 160);
+
+  /*Existen estilos como none, dotted, double, groove, ridge, inset, outset*/
+  /*border-style: solid;*/ 
+
+  /*Podemos combinar estilos de borde*/
+  border-style: dotted ridge double groove;
+}
+/*Hacer esquinas redondeadas*/
+/*
+.bordes-redondeados {
+  border-radius: 50px;
+}
+*/
+
+
+/*Hacer imágenes redondeadas*/
+.bordes-redondeados {
+  border-radius: 10%;
+}
+
+/*Color de fondo de un div*/
+
+div {
+  background-color: bisque;
+}
+
+/*Atributo id en CSS. Se usa un '#'.*/
+#titulo-app-gatos {
+  font-size: 30px;
+  color: green;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+/*Ejemplo de uso de id en imágenes*/
+#imagen-de-lasagna {
+  width: 300px;
+  border-radius: 50%;
+  border-width:  5px;
+  border-style: solid;
+  border-color: brown;
+}
+
+#lista-gatos-aman {
+  font-size: 18px;
+  color: brown;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*PADDING: DISTANCIA ENTRE EL BORDE Y EL CONTENIDO HTML, EN ESTE CASO, ES LA IMAGEN*/
+#imagen-con-padding{
+  width: 300px;
+  /*padding: 20px;*/
+  background-color:yellow;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+
+  /*PADDING A CADA LADO*/
+  /*
+  padding-top: 30px;
+  padding-right: 25px;
+  padding-bottom: 40px;
+  padding-left: 50px;
+  */
+  
+  /*PADDING A UNA LÍNEA. Se acomodan en el sentido de las agujas del reloj*/
+  padding: 30px 25px 40px 50px; 
+
+  /*MARGIN. Separar un elemento de otro elemento. Separamos una imagen de la otra*/
+  /*margin: 20px;*/
+
+  /*AJUSTA EL MARGIN EN UNA SOLA LÍNEA*/
+  margin: 20px 15px 10px 5px;
+}
+
+  /*SELECTORES DE ATRIBUTO*/
+  img[alt] {
+    border-radius: 50%;
+  }
+
+  [type="radio"] {
+    margin: 10px;
+  }
+
+  a[href="https://tecnolochicas.mx/"]{
+    color: violet;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+
+
+
+
+
+
+
+
